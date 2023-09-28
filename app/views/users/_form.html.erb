@@ -1,0 +1,19 @@
+
+<div class="row">
+  <div class="col-md-3 mx-auto">
+<%= form_with(model: @users, local: true) do |form| %>
+
+   <div class="field">
+     <%= form.label :user_name %>
+     <%= form.text_field :user_name ,class:"form-control"%>
+   </div>
+   <br>
+
+    <p style="margin: 5px; line-height: 0.8; text-align: center"> Add phone number or E-mail</p>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+    
+   <% end %>
+   <br>
+   <button onclick="nextPage()">Next</button>
+  </div>
+</div>

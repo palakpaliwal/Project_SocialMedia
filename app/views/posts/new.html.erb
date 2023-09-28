@@ -1,0 +1,11 @@
+<%= form_with model: @post do |form| %>
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_field :content%>
+    <%= form.file_field :post_image %>
+    <div class="actions btn btn-success">
+    <%= form.submit%>
+  </div>
+</div>
+<% end %>
+

@@ -1,0 +1,5 @@
+  <% @posts.each do |post|%>
+    <%if post.post_image.attached? %>
+        <%= image_tag(post.post_image)%>
+    <%end%>
+<% end %>

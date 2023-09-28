@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[7.0]
 
       t.datetime :time
       t.string :content
-      t.belongs_to :users
+      t.belongs_to :user
 
       t.timestamps
     end
