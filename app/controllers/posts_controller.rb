@@ -3,7 +3,8 @@ class PostsController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @posts = Post.all
+       @posts = current_user.posts
+
     end
     
     def show
@@ -17,9 +18,7 @@ class PostsController < ApplicationController
     end
     
     def create
-        @user= User.find_by(id: current_user.id)
-        debugger
-        @post= @user.posts.create(post_params)
+        @post= current_user.posts.create(post_params)
         if @post.save
             redirect_to root_path
         else
@@ -46,7 +45,7 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         @post.destroy
     
-        redirect_to root_path, status: :see_other
+        redirect_to profile_index_path, status: :see_other
     end
     
     private

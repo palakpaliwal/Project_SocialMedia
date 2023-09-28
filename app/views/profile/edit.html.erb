@@ -1,0 +1,13 @@
+<%@profiles&.each do |post|%>
+  <%if profile.profile_image.attached? %>
+    <%= image_tag(profile.profile_image)%>
+    <%= link_to "Delete Post", post, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  <%end%>
+  <br>
+<% end %>
+
+<%= form_with model: @profile do |form| %>
+<div>
+<%= form.label :profile_image %><br>
+<%= form.submit :Update Profile %><br>
+<%end%>

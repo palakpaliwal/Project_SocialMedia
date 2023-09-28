@@ -3,9 +3,11 @@
     <p><%= post.content %></p>
     <%= image_tag(post.post_image , :size => "200x150") %>
     <%= link_to "Delete Post", post, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-    <br> 
-    <%=  %>
-    <h1> jhfg </h1>
+     <h1>Comments</h1>
+     
+  <br> 
   <%end%>
   <br>
 <% end %>
+
+

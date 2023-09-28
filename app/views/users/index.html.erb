@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+    <h1> Instagram Clone </h1><br>
+    <%@posts.each do |post|%>
+
+        <%if post.post_image.attached? %>
+            <%= post.user&.email %> 
+            <%= image_tag(post.post_image , :size => "300x250") %><br>
+        <%end%>
+    <% end %>
+<%end%>
