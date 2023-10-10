@@ -1,15 +1,26 @@
-<nav class="navbar navbar-expand-lg " style="background-color: #333;">
+<nav class="navbar navbar-expand-lg " style="background-color: #09233d;">
+ 
+   <a class="navbar-brand  text-white" style="font-size:4vw" font-family='georgia' style= 'margin-right:30px' >Social</a>
+   <br>
   <div class="collapse navbar-collapse">
-    <a class="navbar-brand">Social</a><br>
-    
+    <br>
     <% if user_signed_in? %>
-      <%= button_to "Home", root_path, method: :delete%>
-      <%= button_to "search", new_search_path ,method: :get%>
-      <%= button_to "notificatio",new_notification_path ,method: :get %>
-       <%= button_to "profile",profile_index_path,method: :get%>
-    <% else %>
-      
-    <% end %>
+    
+      <%= button_to "Home", root_path, method: :get, style: 'margin-right:20px'%>
+      <%= button_to "Search", search_path ,method: :get , style: 'margin-right:20px'%>
+      <%= button_to "Notification",notification_index_path,method: :get , style: 'margin-right:20px' %>
+      <%= button_to "Profile",profile_index_path,method: :get ,style: 'margin-right:20px'%>
+      <%= button_to "Post upload",new_post_path,method: :get,  style: 'margin-right:20px'%>
+      <%= button_to "Users",total_user_path, method: :get,  style: 'margin-right:20px'%>
+      <%= button_to "Chat", rooms_path, method: :get, style: 'margin-right:30px'%>
+      <a  style= "color: white;" ,class="nav-link dropdown-toggle dropdown-left" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+       <nav class="ms-auto"  > 
+         <%= current_user.email %>  
+      </a>
+      <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-dark">
+        <%= link_to'Logout', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },class:"btn btn-outline-success" ,class: "dropdown-item"  %>
+      </nav>
+     <% end %>
   </div>
 </nav>
 

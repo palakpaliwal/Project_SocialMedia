@@ -1,0 +1,13 @@
+<% if current_user.following?(@user)%>
+    <div  class="btn  btn-lg float-right" >
+    <%= button_to "Unfollow", unfollow_path(@user) %>
+    </div>
+<% elsif current_user.sent_follow_request_to?(@user) %>
+    <div class="btn  btn-lg float-right" >
+    <%= button_to "cancle follow request", cancle_path(@user)%>
+    </div>
+<% else %>
+      <div class="btn  btn-lg float-right">
+    <%= button_to "Follow", follow_path(@user)%>
+</div>    
+<%end%>

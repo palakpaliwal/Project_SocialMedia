@@ -1,15 +1,13 @@
 class PostsController < ApplicationController
-     
     before_action :authenticate_user!
 
     def index
        @posts = current_user.posts
-
     end
     
     def show
-        @post = Post.find(params[:id])
-        @post.post_image.attach(params[:post_image])
+         @post = Post.find(params[:id])
+         @post.post_image.attacheds(params[:post_image])
 
     end
     
@@ -18,6 +16,7 @@ class PostsController < ApplicationController
     end
     
     def create
+
         @post= current_user.posts.create(post_params)
         if @post.save
             redirect_to root_path
@@ -47,12 +46,9 @@ class PostsController < ApplicationController
     
         redirect_to profile_index_path, status: :see_other
     end
-    
+     
     private
-        def post_params
+      def post_params
         params.require(:post).permit(:content ,:time ,:post_image)
-        end
-    
-      
-
+      end
 end

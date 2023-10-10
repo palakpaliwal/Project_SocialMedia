@@ -2,11 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
  
     def index
-
-      @users =User.all
-      @posts = Post.all
-      # @posts = current_user..all
-
+      @posts = Post.where(user_id: current_user.following.ids)
     end
   
     def show
@@ -25,8 +21,17 @@ class UsersController < ApplicationController
 
     def destroy
     end
+
+    def search
+      
+      @users =User.all
+      @posts = Post.all
+
+    end
   
-    
+    def total_user
+      @users = User.all
+    end
     
 
 

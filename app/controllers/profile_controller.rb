@@ -2,10 +2,14 @@ class ProfileController < ApplicationController
 
     before_action :authenticate_user!
 
+    def index
+        @posts = current_user.posts
+    end
+
     def show
         @user = User.find(params[:id])
-        @post = Post.new
-        @post = @user.posts
+        @posts = @user.posts
+        @users = User.all
     end
       
     def create_post
@@ -19,10 +23,6 @@ class ProfileController < ApplicationController
         flash[:error] = "Error creating post"
         end
               
-    end
-
-    def index
-        @posts = current_user.posts
     end
     
     def edit
@@ -47,6 +47,10 @@ class ProfileController < ApplicationController
      
     def comment_params
         params.require(:comment).permit(:content, :time)
+    end
+
+    def buttons
+        @user = current_user
     end
     
 end

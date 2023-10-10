@@ -1,0 +1,6 @@
+<% if current_user && current_user.likes?(@post) %>
+ <%= link_to "Unlike", unlike_post_path(@post), method: :post, class: "like-button liked" %>
+<% else %>
+ <%= link_to "Like", like_post_path(@post), method: :post, class: "like-button" %>
+<% end %>
+<span class="like-count"><%= @post.likes.count %> Likes</span>

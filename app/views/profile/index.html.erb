@@ -1,8 +1,28 @@
-<h1 style="text-align:center"> your profile</h1>
-<%= link_to'Logout', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } ,class:"btn btn-outline-success my-2 my-sm-0"  %>
-<%= current_user.email %>
-<%= button_to "post upload",new_post_path,method: :get%>
-<h1> posts </h1>
-<%= render partial: 'posts/post_show'%>
 
+<div class="center">
+    <div class="row">
+      <div class="col-md-8">
+       <h3><b>
+          <%= current_user.email %></b>
+            <div class="col-md-4">
+                <p>
+                    <%= button_to "followers" ,friend_index_path, method: :get , class:'float-right text-dark'%>
+                    <%= current_user.followers.count %>
+                </p>
+                <%= button_to "following" ,following_path, method: :get%>
+                <%= current_user.following.count %>
+            </div>
+        </h3>
+<br>
+<br>
 
+<p class= 'text-Bold'> posts <%= @posts.count%> </p>
+<%= render template: 'posts/index'%>
+
+</div>
+
+</div>
+</div>
+ 
+
+   

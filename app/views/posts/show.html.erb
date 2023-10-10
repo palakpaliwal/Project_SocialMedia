@@ -1,7 +1,12 @@
-<%= @post.content%>
-<h2>Comments</h2>
-<%= render @post.comments%>
 
+<%@posts.each do |post|%>
+  <%if post.post_image.attached? %>
+  <p class= 'text-Bold'> posts <%= @posts.count%> </p>
+    <p><%= post.content %></p>
+    <%= image_tag(post.post_image , :size => "200x150") %>
+  
+    <span class="likes-count"><%= @post.total_likes%> likes</span>
 
-<h2>Add a comment:</h2>
-<%= render "comments/form"%>
+  <% end %>
+<%end%>
+ 

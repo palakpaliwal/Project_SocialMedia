@@ -1,0 +1,19 @@
+<% @users.each do |user|%>
+<% if current_user.following?(user)%>
+    <%= link_to user.email, profile_path(user)%> is following you
+    <div  class="btn  btn-lg float-right" >
+    <%= button_to "Unfollow", unfollow_path(user) %>
+    </div>
+<% elsif current_user.sent_follow_request_to?(user) %>
+    <%= link_to user.email, profile_path(user)%>
+    <div class="btn  btn-lg float-right" >
+    <%= button_to "cancle follow request", cancle_path(user)%>
+    </div>
+<% else %>
+    <%= link_to user.email, profile_path(user)%>
+      <div class="btn  btn-lg float-right">
+    <%= button_to "Follow", follow_path(user)%>
+</div>    
+<%end%>
+<br>
+<% end %>

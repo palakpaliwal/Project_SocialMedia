@@ -1,0 +1,6 @@
+Followers: <%= current_user.followers.count %>
+<br>
+<% current_user.followers.each do |user| %>
+    <%= link_to user.email, profile_path(user) %>
+    <br>
+<% end %>

@@ -1,0 +1,6 @@
+ Following: <%= @following.count %> <br>
+<% @following.each do |user|%>
+ <%= link_to user.email, profile_path(user)%>
+ <br>
+ 
+<%end%>
