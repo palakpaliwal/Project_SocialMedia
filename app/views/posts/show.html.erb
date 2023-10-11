@@ -4,9 +4,8 @@
   <p class= 'text-Bold'> posts <%= @posts.count%> </p>
     <p><%= post.content %></p>
     <%= image_tag(post.post_image , :size => "200x150") %>
-  
-    <span class="likes-count"><%= @post.total_likes%> likes</span>
-
+    <%= button_to "Like", post_likes_path(post) %>
+    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
   <% end %>
 <%end%>
  

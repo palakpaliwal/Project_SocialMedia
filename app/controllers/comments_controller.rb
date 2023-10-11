@@ -1,22 +1,25 @@
 class CommentsController < ApplicationController
+    before_action :authenticate_user!
 
     def index
-        
+      
     end
 
     def create
         @post = Post.find(params[:post_id])
         @comment = @post.comments.create(comment_params)
-        redirect_to post_path(@post)
+        @comment.user_id = current_user.id
+        @comment.save
+        redirect_to profile_index_path
       end
     
 
-    # def destroy
-    #     @post = Post.find(params[:id])
-    #      @comment.User = current_user 
-    #     @post.comments.destroy
+    def destroy
+        @post = Post.find(params[:id])
+         @comment.User = current_user 
+        @post.comments.destroy
 
-    # end
+    end
         
     private
 

@@ -1,11 +1,11 @@
-<% @post.comments.each do |comment| %>
+ <% comments.each do |comment|%>
   <p>
     <strong>Commenter:</strong>
-    <%= comment.user.email%>
+     <%= comment.user&.email%>
   </p>
 
   <p>
     <strong>Comment:</strong>
-    <%= comment.content %>
+    <%= comment.comments %>
   </p>
 <% end %>

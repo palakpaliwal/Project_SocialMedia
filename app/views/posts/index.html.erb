@@ -1,17 +1,22 @@
 <%@posts.each do |post|%>
 
   <%if post.post_image.attached? %>
-    <%= image_tag(post.post_image , :size => "200x150") %>
-    <p><%= post.content %></p>
-   <%= button_to "Like", post_likes_path(post), method: :get %>
-   <%# <%=post.likes.count%> 
-    <div>
-      <input type="text"
-      ><%= button_to 'Comment',method: :get%>
-    </div>
+    <%= image_tag(post.post_image , :size => "300x300") %>
     <%= link_to "Delete Post", post, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    <p><%= post.content %></p>
+    <%= button_to "Like", post_likes_path(post) %>
+    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
+    <div>
+        <%= render 'comments/form', post: post %>
+        <%= render partial: "comments/comments", locals: { comments: post.comments }%>
+    </div>
+    <%= button_to "comments", comments_path, method: :get%>
+
     <p class = "text-muted"><%= post.created_at %> ago </p>
-    <br> 
+    <br>
+
   <%end%>
   <br>
+
 <% end %>

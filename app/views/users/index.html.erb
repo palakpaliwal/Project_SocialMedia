@@ -5,6 +5,15 @@
             <%= link_to post.user&.email, profile_path(post.user)%> <br>
             <%= image_tag(post.post_image , :size => "300x250") %><br>
              <p class = "text-muted"><%=  post.created_at %> ago </p>
+            <%= button_to "Like", post_likes_path(post) %>
+             <%= post&.likes&.count %>    
+              
+           <div>
+            <%= render 'comments/form', post: post %>
+            <%= render partial: "comments/comments", locals: { comments: post.comments }%>
+           <div>
+            </div>
+  
         <%end%>
     <% end %>
 <%end%>

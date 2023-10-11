@@ -1,9 +1,6 @@
-<%= form_with model: [ @post, @post.comments.build ] do |form| %>
-  <p>
-    <%= form.label :comments %><br>
-    <%= form.text_field :comments %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+<%= form_with model: [post, post.comments.build]  do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%# <%= f.hidden_field :post_id, value: post.id %>
+  <%= f.text_area :comments %>
+  <%= f.submit "send", class: "btn btn-primary" %>
 <% end %>

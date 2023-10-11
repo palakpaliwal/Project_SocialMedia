@@ -63,12 +63,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_060853) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "users_id"
-    t.integer "posts_id"
+    t.integer "user_id"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["posts_id"], name: "index_likes_on_posts_id"
-    t.index ["users_id"], name: "index_likes_on_users_id"
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -111,6 +111,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_060853) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "likes", "posts", column: "posts_id"
-  add_foreign_key "likes", "users", column: "users_id"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "users"
 end
