@@ -14,10 +14,11 @@
       <%= button_to "Users",total_user_path, method: :get,  style: 'margin-right:20px'%>
       <%= button_to "Chat", rooms_path, method: :get, style: 'margin-right:30px'%>
       <a  style= "color: white;" ,class="nav-link dropdown-toggle dropdown-left" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-       <nav class="ms-auto"  > 
-         <%= current_user.email %>  
+      <nav class="ms-auto"  > 
+      <%= current_user.email %>  
       </a>
       <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-dark">
+        <%= link_to'Edit',edit_user_registration_path,class:"btn btn-outline-success" ,class: "dropdown-item"  %>
         <%= link_to'Logout', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },class:"btn btn-outline-success" ,class: "dropdown-item"  %>
       </nav>
      <% end %>

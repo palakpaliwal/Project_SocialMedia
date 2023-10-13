@@ -4,14 +4,17 @@ class LikesController < ApplicationController
         # debugger
       @like = current_user.likes.new(post_id: params[:post_id])
         if @like.save
-        flash[:atert] = "you already liked"
+            render json: { liked: true, like_count: @like.post.likes.count }
+        else
+            render json: { liked: false, like_count: @like.post.likes.count }
+        end   
+    
         end
-        redirect_to root_path
-    end
         
     def destroy
         @like = Current_user.likes.find(params[:id])
         @like.destroy
+        render json: { liked: false, like_count: @like.post.likes.count }
     end
     
     def like_params

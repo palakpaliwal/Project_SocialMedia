@@ -1,6 +1,9 @@
-<%= form_with model: [post, post.comments.build]  do |f| %>
+<%= form_with model: [post, post.comments.build], remote: true  do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%# <%= f.hidden_field :post_id, value: post.id %>
-  <%= f.text_area :comments %>
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_field :comments , autofocus: true, autocomplete: "comments" %>
+  </div>
   <%= f.submit "send", class: "btn btn-primary" %>
 <% end %>

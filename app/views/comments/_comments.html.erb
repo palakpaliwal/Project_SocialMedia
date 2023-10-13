@@ -1,11 +1,11 @@
  <% comments.each do |comment|%>
   <p>
-    <strong>Commenter:</strong>
-     <%= comment.user&.email%>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
+    <b> <%=comment.user&.email%> </b>
     <%= comment.comments %>
   </p>
+  
+  <% if current_user == comment.user %>
+    <%= link_to "Delete Comment", comment, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> 
+  <% end %>
+
 <% end %>

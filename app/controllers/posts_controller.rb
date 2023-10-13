@@ -8,7 +8,6 @@ class PostsController < ApplicationController
     def show
          @post = Post.find(params[:id])
          
-
     end
     
     def new
@@ -19,7 +18,7 @@ class PostsController < ApplicationController
 
         @post= current_user.posts.create(post_params)
         if @post.save
-            redirect_to root_path
+            redirect_to profile_index_path
         else
           render :new, status: :unprocessable_entity
         end
@@ -34,8 +33,7 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
     
         if @post.update(post_params)
-        redirect_to root_path
-        else
+        redirect_to profile_index_path
         render :edit, status: :unprocessable_entity
         end
     end

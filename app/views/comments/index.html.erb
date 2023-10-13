@@ -1,2 +1,1 @@
-
-<%= render 'comments/comments' ,local: {comment: @comments}%>
+<%= render partial: "comments/comments", locals: { comments: post.comments }%>

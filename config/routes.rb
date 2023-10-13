@@ -43,8 +43,10 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
-    resources :likes,only: [:create, :destroy]
+    resources :likes,only: [:create, :destroy ]
   end
+
+  resources :my_profiles
 
 end
 

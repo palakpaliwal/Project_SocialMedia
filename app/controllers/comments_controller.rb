@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
     before_action :authenticate_user!
 
     def index
-      
+      @comments = Comment.all
+      @users = User.all
     end
 
     def create
@@ -15,11 +16,21 @@ class CommentsController < ApplicationController
     
 
     def destroy
-        @post = Post.find(params[:id])
-         @comment.User = current_user 
-        @post.comments.destroy
+        @comment = Comment.find(params[:id])
+        if current_user == @comment.user
+            @comment.destroy
+            redirect_to @comment.post, notice: ' comment deleted'
+
+        else
+            redirect_to @comment.post, notice: ' u cannot delete this comment'
+        end
 
     end
+   
+    def comments
+
+    end
+
         
     private
 

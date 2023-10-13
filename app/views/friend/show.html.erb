@@ -7,7 +7,7 @@
 
    <% @users.each do |user|%>
     <% if current_user.following?(user)%>
-        <%= link_to user.email, profile_path(user)%> is following you
+        <%= link_to user.email, profile_path(user)%> is following you 
     <% end %>
 
    <%end%>       

@@ -4,10 +4,10 @@
 			<% @posts.each do |post|%>
 				<%if post.post_image.attached? %>
 					<div class="card mb-3">
-					<%= image_tag(post.post_image , :size => "300x250") %>
-					<div class="card-footer">
-						<%= link_to post.user&.email, profile_path(post.user)%> <br>
-					</div>
+					  <%= image_tag(post.post_image , :size => "300x250") %>
+						<div class="card-footer">
+						 <%= link_to post.user&.name, profile_path(post.user)%> <br>
+					    </div>
 					</div>
 				<%end%>
 			<% end %>
