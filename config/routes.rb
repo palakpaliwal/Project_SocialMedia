@@ -14,6 +14,15 @@ Rails.application.routes.draw do
   get '/following', to:'friend#following', as:'following'
   # get '/following', to: 'friend#following_list', as: 'following_list'
   # root "home#index"
+
+  get 'stories/create'
+  get 'stories/:id' ,to: "stories#show"
+  get 'stories/new'
+  get 'stories/index'
+  get 'strories/create'
+
+
+
   root "users#index"
   resources :likes
   patch '/users/id/unlike', to:'likes#unlike'
@@ -47,6 +56,8 @@ Rails.application.routes.draw do
   end
 
   resources :my_profiles
+
+  resources :stories
 
 end
 

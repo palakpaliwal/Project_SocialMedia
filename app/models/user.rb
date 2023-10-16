@@ -7,10 +7,12 @@ class User < ApplicationRecord
    followability
 
    has_many :posts
+  
    has_many :comments ,through: :posts  
    has_one_attached :profile_image
    has_many :likes
    has_many :liked_posts, through: :likes, source: :post
+   has_many :stories
 
 
    def unfollow(user)
@@ -24,5 +26,5 @@ class User < ApplicationRecord
        User.find(:all)
      end
    end
-   
+
 end

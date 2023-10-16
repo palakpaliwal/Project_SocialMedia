@@ -4,7 +4,7 @@ class ProfileController < ApplicationController
 
     def index
         @posts = current_user.posts
-
+        @stories = current_user.stories
     end
 
     def show

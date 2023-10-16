@@ -13,7 +13,12 @@ class CommentsController < ApplicationController
         @comment.save
         redirect_to profile_index_path
       end
-    
+
+    def show
+       
+        
+    end
+
 
     def destroy
         @comment = Comment.find(params[:id])
@@ -27,10 +32,9 @@ class CommentsController < ApplicationController
 
     end
    
-    def comments
+    def comment_button
 
     end
-
         
     private
 

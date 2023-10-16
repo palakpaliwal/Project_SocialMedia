@@ -3,7 +3,8 @@
   <%# <%= f.hidden_field :post_id, value: post.id %>
   <div class="field">
     <%= f.label :comment %><br />
-    <%= f.text_field :comments , autofocus: true, autocomplete: "comments" %>
+    <%= f.text_field :comments  %>
   </div>
+
   <%= f.submit "send", class: "btn btn-primary" %>
 <% end %>

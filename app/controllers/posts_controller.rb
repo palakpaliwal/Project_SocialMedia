@@ -40,9 +40,13 @@ class PostsController < ApplicationController
     
     def destroy
         @post = Post.find(params[:id])
-        @post.destroy
+        if @post.destroy
+            flash[:notice] = "Post deleted successfully"
+          else
+            flash[:alert] = "Failed to delete the post"
+        end
     
-        redirect_to profile_index_path, status: :see_other
+        redirect_to profile_index_path
     end
      
     private

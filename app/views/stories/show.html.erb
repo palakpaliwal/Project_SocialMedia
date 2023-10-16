@@ -1,0 +1,13 @@
+ <div class = 'top'> 
+  <div class='imgsml'>
+    <li>
+    <% @story each do |story| %>
+          <%=image_tag(story.image,size: '100x100',:class=> "img-circular")if story.image.attached? %>  
+           <button type="button" class="btn btn-Danger"><%= link_to"Delete" ,story %></button>
+        </a>
+        
+      <%end%>
+    
+    <li>
+  </div>
+</div>
