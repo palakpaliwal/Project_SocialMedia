@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # root "home#index"
 
   get 'stories/create'
-  get 'stories/:id' ,to: "stories#show"
+  get 'stories/show'
   get 'stories/new'
   get 'stories/index'
   get 'strories/create'

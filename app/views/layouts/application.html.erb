@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <i class="bi bi-alarm-fill"></i>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>
     <%=render partial: "users/navbar" %>
-     <i class="fa-solid fa-house"></i>
      <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p> 
-     <i class="fas fa-band-aid"></i>
-
     <%= yield %>
   </body>
 </html>

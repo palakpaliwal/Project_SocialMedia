@@ -3,6 +3,8 @@ class StoriesController < ApplicationController
 
     def index
         @stories = current_user.stories
+        @stories = Story.where("user_id IN (?) OR user_id = ?", current_user.following.ids, current_user.id)
+
     end
 
     def new
@@ -12,15 +14,16 @@ class StoriesController < ApplicationController
     def create
         @story = current_user.stories.create(story_params)
         if @story.save
-        redirect_to posts_path, notice: 'Story created successfully.'
+        redirect_to users_path, notice: 'Story created successfully.'
         else
         flash[:alert] = 'Story could not be created.'
-        render :new
+        render 'users/index'
         end
     end
 
     def show
         @story = Story.find(params[:id])
+        @stories = Story.where(user_id: @story.user_id)
         if @story.present?
 
           if @story.expires_at.present? && @story.expires_at > Time.now
@@ -34,17 +37,17 @@ class StoriesController < ApplicationController
 
     def destroy
         @story = Story.find(params[:id])
-    
-        if @story.destroy
-            flash[:notice] = "Story deleted successfully"
-            render :show
-          else
-            flash[:alert] = "Failed to delete the story"
+        if @story.user == current_user
+        @story.destroy
+        flash[:success] = "Story deleted successfully."
+        redirect_to root_path
+        else
+        flash[:error] = "You don't have permission to delete this story."
+        redirect_to root_path
         end
-    
-        redirect_to profile_index_path
     end
-
+    
+      
 
     private
 

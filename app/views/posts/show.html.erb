@@ -1,4 +1,3 @@
-
 <%@posts.each do |post|%>
   <%if post.post_image.attached? %>
     <%= image_tag(post.post_image , :size => "300x300") %>
@@ -6,14 +5,14 @@
     <%= button_to "Like", post_likes_path(post) %>
     <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
-    <div>
+    
       <%= render 'comments/form', post: post %>
-      <%# <%= render post.comments %> 
-    </div>
-    <p class = "text-muted"><%= post.created_at %> ago </p>
+      <%# <%= render post.comments %>
+      <%= render partial: "comments/comment", locals: { comments: post.comments } %>
+ 
+    <div class="text-muted"> <%= post.created_at %> ago </div>
     <br>
-
   <%end%>
   <br>
-<%end%>
+<% end %>
  

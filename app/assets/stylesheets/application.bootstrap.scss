@@ -1,2 +1,60 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+.profile-button {
+    float: right;
+    margin-top: -6rem;
+}
+
+.story-button {
+    float: right;
+}
+
+.imgsml{
+
+    border-radius: 100%;
+  }
+
+  .img-circular{
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    display: block;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+   }
+
+   .card {
+    width: 25rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: auto;
+  }
+  .card-body {
+    padding: 20px;
+  }
+  
+  .imgsml {
+    display: flex;
+    align-items: center;
+  }
+  
+  .img-circular {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .right { 
+    position: absolute;
+    
+    right: 5%;
+    top: 35%;
+  }

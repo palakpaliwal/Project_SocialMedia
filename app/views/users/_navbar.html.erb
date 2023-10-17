@@ -1,18 +1,18 @@
 <nav class="navbar navbar-expand-lg " style="background-color: #09233d;">
  
-   <a class="navbar-brand  text-white" style="font-size:4vw" font-family='georgia' style= 'margin-right:30px' >Social</a>
+   <a class="navbar-brand  text-white" style="font-size:4vw" font-family='georgia' style= 'margin-right:50px' >Social</a>
    <br>
   <div class="collapse navbar-collapse">
     <br>
     <% if user_signed_in? %>
     
-      <%= button_to "Home", root_path, method: :get, style: 'margin-right:20px'%>
-      <%= button_to "Search", search_path ,method: :get , style: 'margin-right:20px'%>
-      <%= button_to "Notification",notification_index_path,method: :get , style: 'margin-right:20px' %>
-      <%= button_to "Profile",profile_index_path,method: :get ,style: 'margin-right:20px'%>
-      <%= button_to "Post upload",new_post_path,method: :get,  style: 'margin-right:20px'%>
-      <%= button_to "Users",total_user_path, method: :get,  style: 'margin-right:20px'%>
-      <%= button_to "Chat", rooms_path, method: :get, style: 'margin-right:30px'%>
+      <%= button_to " ", root_path, method: :get, style: 'margin-right:40px' ,class:"bi bi-house-door-fill"%>
+      <%= button_to "", search_path ,method: :get , style: 'margin-right:40px' , class:"bi bi-search-heart-fill"%>
+      <%= button_to '',notification_index_path,method: :get , style: 'margin-right:40px' , class:"bi bi-bell-fill" %>
+      <%= button_to " ",profile_index_path,method: :get ,style: 'margin-right:40px' ,class:"bi bi-person-bounding-box"%></i>
+      <%= button_to " ",new_post_path,method: :get,  style: 'margin-right:40px' ,class:"bi bi-clipboard-plus-fill"%>
+      <%= button_to "",total_user_path, method: :get,  style: 'margin-right:40px' ,class:"bi bi-people-fill"%>
+      <%= button_to " ", rooms_path, method: :get, style: 'margin-right:40px' ,class:"bi bi-chat-fill"%>
       <a  style= "color: white;" ,class="nav-link dropdown-toggle dropdown-left" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
       <nav class="ms-auto"  > 
       <%= current_user.email %>  

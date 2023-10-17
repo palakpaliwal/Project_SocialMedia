@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     def index
      
       @posts = Post.where(user_id: current_user.following.ids)
+      @stories = Story.where("user_id IN (?) OR user_id = ?", current_user.following.ids, current_user.id)
        
     end
   

@@ -1,5 +1,7 @@
 <% if user_signed_in?%>
-    <h1> Instagram Clone </h1><br>
+   <button type="button" class="btn btn-success">
+   <%=link_to "Stories" ,stories_index_path %><br>
+   </button><br>
     <% @posts.each do |post|%>
         <%if post.post_image.attached? %>
             <%= link_to post.user&.email, profile_path(post.user)%> <br>
@@ -10,7 +12,7 @@
               
            <div>
             <%= render 'comments/form', post: post %>
-            <%# <%= render partial: "comments/comment", locals: { comments: post.comments }%>
+            <%= render partial: "comments/comment", locals: { comments: post.comments } %>
            <div>
             </div>
   

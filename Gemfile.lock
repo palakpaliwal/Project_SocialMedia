@@ -267,7 +267,7 @@ DEPENDENCIES
   debug
   devise
   followability (~> 1.1)
-  font-awesome-sass (~> 6.4.2)
+  font-awesome-sass
   image_processing (~> 1.2)
   jbuilder
   jquery-rails

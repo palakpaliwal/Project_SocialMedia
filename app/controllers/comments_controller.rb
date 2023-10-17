@@ -21,13 +21,11 @@ class CommentsController < ApplicationController
 
 
     def destroy
-        @comment = Comment.find(params[:id])
-        if current_user == @comment.user
+        debugger
+        @comment = current_user.comments.find(params[:id])
+        if @comment.present?
             @comment.destroy
-            redirect_to @comment.post, notice: ' comment deleted'
-
-        else
-            redirect_to @comment.post, notice: ' u cannot delete this comment'
+            redirect_to root_path, notice: ' comment deleted'
         end
 
     end

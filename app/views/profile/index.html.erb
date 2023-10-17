@@ -1,57 +1,61 @@
-<div class="card" style="width: 25rem;">
+<div class = center>  
+  <div class="card" style="width: 25rem;">
     <img src="" class="card-img-top">
     <div class ="card-body">
       <div class='imgsml'>
-        <%=image_tag( current_user.profile_image,size: '100x100',:class=> "img-circular")if current_user.profile_image.attached? %><br>
-         <b>Email-</b><%= current_user.email%><br>
-        <b>Bio-</b><%= current_user.bio %>
+        <%=image_tag( current_user.profile_image,size: '100x100',class:"img-circular")if current_user.profile_image.attached? %>
+      </div>
+      <b>Username - </b><%=current_user.name%><br>
+      <b> Email - </b><%=current_user.email%><br>
+      <b> Bio - </b><%=current_user.bio%><br>
+
+<div class= right>
+  <p>
+    <div class="col-sm-3 ml-2">   
+      <div class="mx-auto" style="width: 200px;"> 
+        <p  class='btn btn-lg',style="width: 200px">Post 
+          <br><%= @posts.count %> </p>
       </div>
     </div>
-</div>
-<%=current_user.name%>
 
-<button type="button" class="btn btn-success"><%=link_to "Story ",stories_show_path%></button><br>
-
-<div class="center">
-    <div class="row">
-      <div class="col-md-8">
-      
-       <h3>
-            <div class="col-md-4">
-            
-               <strong>Username-</strong><%= current_user.name %>
-        </h3>
-        <h2>
-            <div class="row">
-            <p>
-                <div class="col-sm-3 ml-2">   
-                 <div class="mx-auto" style="width: 200px;"> 
-                    <p  class='btn btn-lg',style="width: 200px">Post 
-                     <br><%= @posts.count %> </p>
-                </div>
-                </div>
-
-                <div class="col-sm-3 ml-2">
-                 <div class="mx-auto" style="width: 200px;">
-                    <%= button_to "followers" ,friend_index_path, method: :get , class:' btn btn-lg ', style: 'margin-right:100px' %>
-                    <%=  current_user.followers.count %>
-                </div>
-                </div>
-               
-                <div  class="col-sm-6 ml-4"> 
-                <div class="mx-auto" style="width: 200px;"> 
-               
-                    <%= button_to "following" ,following_path, method: :get ,class:'btn btn-lg',style:"width: 200px"%>
-                    <%= current_user.following.count  %>
-                   
-                </div>
-                </div>
+  <div class="col-sm-3 ml-2">
+    <div class="mx-auto" style="width: 200px;">
+      <%= button_to "followers" ,friend_index_path, method: :get , class:' btn btn-lg ', style: 'margin-right:100px' %>
+      <%=  current_user.followers.count %>
+    </div>
+  </div>
                 
-            </div>    
-        </h2>
-<br>
-<br>
+  <div  class="col-sm-6 ml-4"> 
+    <div class="mx-auto" style="width: 200px;"> 
+                
+      <%= button_to "following" ,following_path, method: :get ,class:'btn btn-lg',style:"width: 200px"%>
+      <%= current_user.following.count  %>
+                    
+    </div>
+  </div>
+                  
+</div>    
+          
+  <br>
+    </div>
+  </div>
+</div>
+</div>
+<div class = 'top'> 
+  <div class='imgsml'>
+    <li>
+      <% @stories.each do |story| %>
+        <% if story.image.attached? && story.expires_at && story.expires_at >= Time.now %>
+          <% if story.user == current_user %>
+            <%=image_tag(story.image,size: '100x100',:class=> "img-circular")%> 
+            <%= link_to "Delete", story, method: :delete, data: { confirm: "Are you sure?" } %>
+          <%end%>
+        <%end%>
+      <%end%> 
+    <li>
+  </div>
+</div>
+<button type="button" class="btn btn-success"><%=link_to "Story",new_story_path%></button><br>
+</div>
+</div>
 <%= render template: 'posts/index'%>
-
-</div>
-</div>

@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
    has_many :posts
   
-   has_many :comments ,through: :posts  
+   has_many :comments  
    has_one_attached :profile_image
    has_many :likes
    has_many :liked_posts, through: :likes, source: :post
