@@ -1,11 +1,8 @@
  <% comments.each do |comment|%>
- <p>
-    <b> <%=comments.first.user&.email%> </b>
-    
+   <b> <%=comments.first.user&.email%> </b>
     <%= comment.comments%>
-  </p>
-  <%= link_to "Delete Comment",[comment.post , comment] , data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-
+  <%= link_to "",[comment.post , comment] , data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } , class:"bi bi-trash3-fill"%>
+ <br>
 <% end %>
     
 

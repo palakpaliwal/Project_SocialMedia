@@ -1,21 +1,29 @@
 class LikesController < ApplicationController
-    before_action :authenticate_user!
-    def create 
-        # debugger
-      @like = current_user.likes.new(post_id: params[:post_id])
-        if @like.save
-            render json: { liked: true, like_count: @like.post.likes.count }
-        else
-            render json: { liked: false, like_count: @like.post.likes.count }
-        end   
-    
-        end
-        
-    def destroy
-        @like = Current_user.likes.find(params[:id])
-        @like.destroy
-        render json: { liked: false, like_count: @like.post.likes.count }
+   
+  def create
+    @post = Post.find(params[:post_id])
+    @like = current_user.likes.find_or_initialize_by(post: @post)
+
+    if @like.new_record?
+      if @like.save
+        render json: { liked: true, like_count: @post.likes.count }
+      else
+        render json: { error: 'Failed to create like' }, status: :unprocessable_entity
+      end
+    else
+      @like.destroy
+      render json: { liked: false, like_count: @post.likes.count }
     end
+  end
+
+  def destroy
+    @like = current_user.likes.find(params[:id])
+    @post = @like.post
+    @like.destroy
+    render json: { liked: false, like_count: @post.likes.count }
+  end
+
+  private
     
     def like_params
         params.require(:like).permit(:post_id)

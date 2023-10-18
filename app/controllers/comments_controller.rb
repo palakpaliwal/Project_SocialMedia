@@ -21,7 +21,6 @@ class CommentsController < ApplicationController
 
 
     def destroy
-        debugger
         @comment = current_user.comments.find(params[:id])
         if @comment.present?
             @comment.destroy

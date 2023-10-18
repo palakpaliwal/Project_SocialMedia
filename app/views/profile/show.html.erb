@@ -1,56 +1,49 @@
-  <div class="card" style="width: 25rem;">
-    <img src="" class="card-img-top">
-    <div class ="card-body">
-      <div class='imgsml'>
-        <%=image_tag( @user.profile_image,size: '100x100',:class=> "img-circular")if @user.profile_image.attached? %><br>
+<div class="container "> 
+  <div class="row row-cols-2">
+    <div class="col">
+      <img src="" class="card-img-top">
+        <div class='imgsml'>
+        <%=image_tag( @user.profile_image,size: '100x100',:class=> "img-circular")if @user.profile_image.attached? %>
+        </div><br>
+        <strong>Username-</strong><%= @user.name %>
          <b>Email-</b><%= @user.email%><br>
-        <b>Bio-</b><%= @user.bio %>
+         <b>Bio-</b><%= @user.bio %>
       </div>
+ 
+ <div class = "col"> 
+        <table class="table">
+          <thead>
+          <tr>
+            <th>
+              <p>
+                Post
+              <p>
+            </th>
+            <th>
+              <%= button_to "followers" ,friend_index_path, method: :get , class:' btn btn-lg ' %>
+            </th>
+            <th>
+              <%= button_to "following" ,following_path, method: :get ,class:'btn btn-lg'%>
+            </th>
+          </tr>
+          </thead>
+          <tbody> 
+            <tr>
+              <td> <%= @posts.count %> </td>
+              <td> <%=  current_user.followers.count %> </td>
+              <td> <%= current_user.following.count  %> </td>
+            </tr>
+          </tbody>
+        </table>   
+      </div> 
+    </div>    
+                          
+         
     </div>
+  </div>
 </div>
-<div class="center">
-    <div class="row">
-      <div class="col-md-8">
-      
-       <h3>
-            <div class="col-md-4">
-            
-               <strong>Username-</strong><%= @user.name %>
-        </h3>
-         <%= render partial: 'profile/button'%> 
-        <h2>
-            <div class="row">
-
-            <div class="col-sm-3 ml-2">   
-                 <div class="mx-auto" style="width: 200px;"> 
-                    <p  class='btn btn-lg',style="width: 200px">Post 
-                     <br><%= @posts.count %> </p>
-                </div>
-                </div>
-
-                <div class="col-sm-3 ml-2">
-                 <div class="mx-auto" style="width: 200px;">
-                    <%= button_to "followers" ,friend_index_path, method: :get , class:' btn btn-lg ', style: 'margin-right:100px' %>
-                    <%=  current_user.followers.count %>
-                </div>
-                </div>
-               
-                <div  class="col-sm-6 ml-4"> 
-                <div class="mx-auto" style="width: 200px;"> 
-               
-                    <%= button_to "following" ,following_path, method: :get ,class:'btn btn-lg',style:"width: 200px"%>
-                    <%= current_user.following.count  %>
-                   
-                </div>
-                </div>
-
-            </div>    
-
+</div>
         </h2>
          <%= render template: 'posts/show'%>
-<br>
-<br>
 
-</div>
-</div>
  

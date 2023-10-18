@@ -24,11 +24,11 @@
     -moz-border-radius: 100px;
    }
 
-   .card {
-    width: 25rem;
+ .card {
     border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+
   }
   
   .card-img-top {
@@ -58,3 +58,16 @@
     right: 5%;
     top: 35%;
   }
+
+.right-side {
+  margin-top: 20px;
+  margin-right: 40px;
+}
+
+.b {
+  text-align: left;
+}
+.my-narrow-input {
+  width: 150px;
+  text-align: right;
+}
