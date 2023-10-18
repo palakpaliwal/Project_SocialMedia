@@ -1,8 +1,9 @@
- <% comments.each do |comment|%>
-   <b> <%=comments.first.user&.email%> </b>
+<% comments.each do |comment|%>
+   <b> <%=comments.first.user&.name%> </b>
     <%= comment.comments%>
-  <%= link_to "",[comment.post , comment] , data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } , class:"bi bi-trash3-fill"%>
- <br>
+    <% if comments.first.user == current_user %>
+     <%= link_to "",[comment.post , comment] , data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } , class:"bi bi-trash3-fill", style:"color: black"%>
+    <% end%><br>
 <% end %>
     
 

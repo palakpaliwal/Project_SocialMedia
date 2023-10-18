@@ -1,16 +1,13 @@
-   <% current_user.follow_requests.each do |request|%>
-    <%= request.followerable.email%> want to follow you
-    <%= button_to "Accept", accept_path(request.followerable)%>
-   
-    <%= button_to "Decline", decline_path(request.followerable)%>
-   <% end %>
-
-   <% @users.each do |user|%>
-    <% if current_user.following?(user)%>
-        <%= link_to user.email, profile_path(user)%> is following you 
-    <% end %>
-
-   <%end%>       
+<% current_user.follow_requests.each do |request|%>
+<%= request.followerable.email%> want to follow you
+<%= button_to "Accept", accept_path(request.followerable), style:"color: black", class:"btn btn-success"%>
+<%= button_to "Decline", decline_path(request.followerable), style:"color: black", class:"btn btn-danger"%>
+<% end %>
+<% @users.each do |user|%>
+<% if current_user.following?(user)%>
+    <%= link_to user.email, profile_path(user)%> is following you 
+<% end %><br>
+<%end%>       
  
 
     

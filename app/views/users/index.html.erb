@@ -4,18 +4,16 @@
    </button><br>
     <% @posts.each do |post|%>
         <%if post.post_image.attached? %>
-            <%= link_to post.user&.email, profile_path(post.user)%> <br>
+           <b> <%= link_to post.user&.email, profile_path(post.user), style:"color: black"%></b> <br>
             <%= image_tag(post.post_image , :size => "300x250") %><br>
-             <p class = "text-muted"><%=  post.created_at %> ago </p>
-            <%= button_to "Like", post_likes_path(post) %>
-             <%= post&.likes&.count %>    
-              
-           <div>
-            <%= render 'comments/form', post: post %>
-            <%= render partial: "comments/comment", locals: { comments: post.comments } %>
-           <div>
-            </div>
-  
+            <div class="b ">
+            <%= button_to " ", post_likes_path(post), class:"bi bi-balloon-heart-fill", style:"color: black" %>
+            <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+        <div class="a">
+        <%= render 'comments/form', post: post,class: "btn  btn-sm btn-right"  %>
+        <%= render partial: "comments/comment", locals: { comments: post.comments } %>
+         </div>
+            </b>
         <%end%>
         <br>
     <% end %>

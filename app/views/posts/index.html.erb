@@ -7,21 +7,20 @@
 
         <%= image_tag(post.post_image , :size => "300x300") %>
         <p><%= post.content %>
-        <%= link_to " ", post, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } ,class:"bi bi-trash3-fill" , style:"color: black;" %></p>
+        <%= link_to " ", post, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } ,class:"bi bi-trash3-fill" , style:"color: red;" %></p>
         <div class="row row-cols-2">
           <div class= "col">
             <div class="b">
-            <%= button_to " ", post_likes_path(post), class:"bi bi-balloon-heart-fill", style:"color: black" ,remote: true%>
+            <%= button_to " ", post_likes_path(post), class:"bi bi-balloon-heart-fill", style:"color: black" %>
             <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-              
             </div>
           </div>
           <div class = 'col'>
-            <%= render 'comments/form', post: post %>
-            <%= render partial: "comments/comment", locals: { comments: post.comments } %>
+            <%= render 'comments/form', post: post%>
+            <%= render partial: "comments/comment", locals: { comments: post.comments } ,class: "a" %>
+            
           </div>
         </div>  
-        <p class = "text-muted"><%= post.created_at %> ago </p>
         
         <br>
       <%end%>

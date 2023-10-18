@@ -2,8 +2,7 @@
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%# <%= f.hidden_field :post_id, value: post.id %>
   <div class="field">
-    <%= f.label :comment ,class: 'my-narrow-input' %><br />
     <%= f.text_field :comments  ,class: 'my-narrow-input'%>
-  <%= f.submit " ", class: "btn btn-primary" ,class:"bi bi-send-fill"%>
+    <%= f.submit " submit", class: "btn btn-primary"%>
   </div>
 <% end %>

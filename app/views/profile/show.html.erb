@@ -7,9 +7,8 @@
         </div><br>
         <strong>Username-</strong><%= @user.name %>
          <b>Email-</b><%= @user.email%><br>
-         <b>Bio-</b><%= @user.bio %>
+         <b>Bio-</b><%= @user.bio %><br>
       </div>
- 
  <div class = "col"> 
         <table class="table">
           <thead>
@@ -43,6 +42,15 @@
   </div>
 </div>
 </div>
+<div class="text-center">
+<% if current_user.following?(@user)%>
+  <%= button_to "Unfollow", unfollow_path(@user) ,class: "btn btn-dark" %>
+<% elsif current_user.sent_follow_request_to?(@user) %>
+  <%= button_to "cancle follow request", cancle_path(@user) ,class:"btn btn-secondary"%>
+<% else %>
+  <%= button_to "Follow", follow_path(@user) ,class:"btn btn-primary"%>
+<%end%>
+</div><br>
         </h2>
          <%= render template: 'posts/show'%>
 

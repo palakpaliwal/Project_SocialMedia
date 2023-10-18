@@ -12,11 +12,11 @@ class CommentsController < ApplicationController
         @comment.user_id = current_user.id
         @comment.save
         redirect_to profile_index_path
-      end
+    end
 
     def show
-       
-        
+       debugger
+        @post = Post.find(params[:post_id])
     end
 
 
