@@ -10,8 +10,9 @@
             <%= button_to " ", post_likes_path(post), class:"bi bi-balloon-heart-fill", style:"color: black" %>
             <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
         <div class="a">
-        <%= render 'comments/form', post: post,class: "btn  btn-sm btn-right"  %>
-        <%= render partial: "comments/comment", locals: { comments: post.comments } %>
+        <%= button_to "comment", post_comments_path(post) %>
+        <%# <%= render 'comments/form', post: post,class: "btn  btn-sm btn-right"  %>
+        <%# <%= render partial: "comments/comment", locals: { comments: post.comments } %> 
          </div>
             </b>
         <%end%>

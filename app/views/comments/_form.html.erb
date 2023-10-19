@@ -1,8 +1,9 @@
-<%= form_with model: [post, post.comments.build], remote: true  do |f| %>
+
+<%= form_with model: [post, post.comments.build] do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%# <%= f.hidden_field :post_id, value: post.id %>
   <div class="field">
     <%= f.text_field :comments  ,class: 'my-narrow-input'%>
-    <%= f.submit " submit", class: "btn btn-primary"%>
+    <%= f.submit " submit", class: "btn btn-primary" ,class:"bi bi-send"%>
   </div>
 <% end %>
