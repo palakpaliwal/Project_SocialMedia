@@ -1,5 +1,5 @@
 <% @stories.each do |story| %>
-  <% if story.image.attached? %>
+  <% if story.image.attached?%>
     <%= link_to story.user&.email, profile_path(story.user) %>
     <%= image_tag(story.image, size: "300x250") %><br>
     <p class="text-muted"><%= story.created_at %> ago </p>

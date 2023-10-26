@@ -50,6 +50,12 @@ class PostsController < ApplicationController
     
         redirect_to profile_index_path
     end
+
+    def comment_button
+        @post = Post.find(params[:id])
+        @user = User.find(params[:id])
+    end
+    
      
     private
       def post_params

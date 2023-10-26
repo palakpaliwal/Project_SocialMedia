@@ -12,6 +12,12 @@ gem "followability", "~> 1.1"
 
 gem 'jquery-rails'
 
+gem 'ransack'
+
+gem 'gemoji'
+
+gem 'rails_emoji_picker'
+
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

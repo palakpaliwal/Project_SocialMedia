@@ -1,7 +1,7 @@
 <% comments.each do |comment|%>
-   <b> <%=comments.first.user&.name%></b>
+   <b> <%=comment.user&.name%></b>
     <%= comment.comments%>
-    <% if comments.first.user == current_user %>
+    <% if comment.user == current_user %>
      <%= link_to "",[comment.post , comment] , data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } , class:"bi bi-trash3-fill", style:"color: black"%>
     <% end%><br>
 <% end %>

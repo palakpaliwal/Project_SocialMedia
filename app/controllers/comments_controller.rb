@@ -22,13 +22,11 @@ class CommentsController < ApplicationController
 
 
     def destroy
-      @comments = current_user.comments.find(params[:id])
-      @comments.each do|comment|
-        if comment.present?
-            comment.destroy
-            redirect_to root_path, notice: ' comment deleted'
+      @comment = current_user.comments.find(params[:id])
+        if @comment.present?
+            @comment.destroy
+             redirect_to root_path, notice: ' comment deleted'
         end
-      end
     end
    
     def comment_button

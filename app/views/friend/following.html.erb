@@ -1,6 +1,35 @@
  Following: <%= @following.count %> <br>
 <% @following.each do |user|%>
- <%= link_to user.email, profile_path(user)%>
- <br>
+    <% if current_user.following?(user)%>
+       <div class="imgsml" >
+        <%=image_tag(user.profile_image,size: '100x100',:class=> "img-circular")if user.profile_image.attached? %>
+        <%= link_to user.email, profile_path(user)%>  
+         
+            <div  class="btn  btn-lg float-right" >
+                <%= button_to "Unfollow", unfollow_path(user) ,class: "btn btn-dark" %>
+            </div>
+        </div>
+
+    <% elsif current_user.sent_follow_request_to?(user) %>
+        <div class="imgsml" >
+          <%=image_tag(user.profile_image,size: '100x100',:class=> "img-circular")if user.profile_image.attached? %>
+          <%= link_to user.email, profile_path(user)%> 
+            <div class="btn  btn-lg float-right" >
+                <%= button_to "cancle follow request", cancle_path(user) ,class:"btn btn-secondary"%>
+            </div>
+        </div>
+
+    <% else %>
+        <div class="imgsml" >
+            <%=image_tag(user.profile_image,size: '100x100',:class=> "img-circular")if user.profile_image.attached? %>
+            <%= link_to user.email, profile_path(user)%> 
+            <div class="btn  btn-lg float-right">
+            <%= button_to "Follow", follow_path(user) ,class:"btn btn-primary"%>
+            </div>
+        </div>
+
+    <%end%>
+    <br>
+
  
 <%end%>

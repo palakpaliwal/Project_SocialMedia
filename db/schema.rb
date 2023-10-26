@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_16_105226) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_20_074030) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -98,10 +98,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_105226) do
   create_table "stories", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "content"
-    t.datetime "expires_at", default: "2023-10-17 11:08:25"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.datetime "expires_at"
     t.index ["user_id"], name: "index_stories_on_user_id"
   end
 

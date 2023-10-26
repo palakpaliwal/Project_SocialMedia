@@ -5,6 +5,7 @@ class ProfileController < ApplicationController
     def index
         @posts = current_user.posts
         @stories = current_user.stories
+        @posts = current_user.posts.order(created_at: :desc)
     end
 
     def show

@@ -12,20 +12,23 @@ class StoriesController < ApplicationController
     end
 
     def create
-        @story = current_user.stories.create(story_params)
+        @story = current_user.stories.new(story_params)
+        @story.expires_at = DateTime.now + 1.day
         if @story.save
-        redirect_to users_path, notice: 'Story created successfully.'
+            redirect_to users_path, notice: 'Story created successfully.'
         else
-        flash[:alert] = 'Story could not be created.'
-        render 'users/index'
+            flash[:alert] = 'Story could not be created.'
+            render 'users/index'
         end
     end
 
     def show
+        debugger
         @story = Story.find(params[:id])
+        @story.expires_at = DateTime.now + 1.day
         @stories = Story.where(user_id: @story.user_id)
         if @story.present?
-
+           
           if @story.expires_at.present? && @story.expires_at > Time.now
 
             else

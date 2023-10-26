@@ -1,29 +1,6 @@
+<%= form_tag users_path, method: :get, class:"d-flex searchform", role:"search" do %>
+    <%= label_tag(:search, "Username...")%>
+    <%= text_field_tag :search, params[:search]%>
+    <%= submit_tag("",name:nil, value:"search")%>
+  <%end%>
 
-<div class="row">
-<div class="col-md-3 mx-auto">
-<%= form_with(model: @users, local: true) do |form| %>
-
-<div class="field">
-  <%= form.label :user_name %>
-  <%= form.text_field :user_name ,class:"form-control"%>
-</div>
-<br>
-  
-<div class="field">
-  <p>Contact:</p>
-    <%= form.radio_button :contact_type, 'mobile_number' %>
-    <%= form.label :contact_type, 'mobile_number' %>
-    <%= form.radio_button :contact_type, 'email' %>
-    <%= form.label :contact_type, 'Email' %>
-</div>
-
-<div class="field">
-<%= form.label :gender %>
-<%= form.select :gender, ['Male', 'Female', 'Other'] %>
-</div>
-
-<% end %>
-<br>
- <%= button_to "next", new_search_path ,method: :get%>
-</div>
-</div>

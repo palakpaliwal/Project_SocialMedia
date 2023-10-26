@@ -7,6 +7,7 @@ class FriendController < ApplicationController
     
     def show 
         @user = User.find(params[:id])
+        redirect_to notification_index_path
     end
 
     def follow

@@ -2,10 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
  
     def index
-     
-      @posts = Post.where(user_id: current_user.following.ids)
+      @users = User.where(user_id: current_user.following.ids)
+      @posts = Post.where(user_id: current_user.following.ids).order(created_at: :desc)
       @stories = Story.where("user_id IN (?) OR user_id = ?", current_user.following.ids, current_user.id)
-       
     end
   
     def show
@@ -26,10 +25,8 @@ class UsersController < ApplicationController
     end
 
     def search
-      
-      @users =User.all
-      @posts = Post.all
-
+      @q = User.ransack(params[:q])
+      @users= @q.result(distinct: true)
     end
   
     def total_user

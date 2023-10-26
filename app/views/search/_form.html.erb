@@ -1,0 +1,5 @@
+<% form_tag search_index_path, :method => "get" do %>
+  <%= label_tag(:name, "Name:") %>
+  <%= text_field_tag :name, params[:search] %>
+  <%= submit_tag("Search", :name => nil) %>
+<% end %>

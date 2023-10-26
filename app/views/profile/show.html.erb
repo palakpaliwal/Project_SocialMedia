@@ -5,7 +5,7 @@
         <div class='imgsml'>
         <%=image_tag( @user.profile_image,size: '100x100',:class=> "img-circular")if @user.profile_image.attached? %>
         </div><br>
-        <strong>Username-</strong><%= @user.name %>
+        <strong>Username-</strong><%= @user.name %><br>
          <b>Email-</b><%= @user.email%><br>
          <b>Bio-</b><%= @user.bio %><br>
       </div>
@@ -29,8 +29,8 @@
           <tbody> 
             <tr>
               <td> <%= @posts.count %> </td>
-              <td> <%=  current_user.followers.count %> </td>
-              <td> <%= current_user.following.count  %> </td>
+              <td> <%=  @user.followers.count %> </td>
+              <td> <%= @user.following.count  %> </td>
             </tr>
           </tbody>
         </table>   

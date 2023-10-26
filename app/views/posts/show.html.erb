@@ -13,14 +13,17 @@
             <%= button_to " ", post_likes_path(post), class:"bi bi-balloon-heart-fill", style:"color: black" ,remote: true%>
             <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
             </div>
-            <div class= "a">
+            <%# <div class= "a">
             <%= button_to " ", post_comments_path(post) ,class:"bi bi-chat", method: :get%></p> 
-            </div>
+            <%# </div> %>
           </div>
+           <div class= "a">
+              <%= button_to " ", post_comments_path(post) ,class:"bi bi-chat", method: :get%></p> 
+            </div>
           <div class = 'col'>
-            <%= button_to '', comments_path ,class:"bi bi-chat"%>
-            <%# <%= render 'comments/form', post: post %>
-            <%# <%= render partial: "comments/comment", locals: { comments: post.comments } %> 
+            <%= render 'comments/form', post: post%>
+            <%= render partial: "comments/comment", locals: { comments: post.comments } ,class: "a" %>
+            
           </div>
         </div>  
         <p class = "text-muted"><%= post.created_at %> ago </p>

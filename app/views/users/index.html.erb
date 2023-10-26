@@ -1,19 +1,37 @@
 <% if user_signed_in?%>
+
+ <% @stories.each do |story| %>
+  <% if story.image.attached?%>
+        <%=image_tag(user.profile_image,size: '100x100',:class=> "img-circular")if user.profile_image.attached? %>
+        <%= link_to user.email, profile_path(user)%> 
+  <% end %>
+<% end %>
+
    <button type="button" class="btn btn-success">
    <%=link_to "Stories" ,stories_index_path %><br>
    </button><br>
     <% @posts.each do |post|%>
         <%if post.post_image.attached? %>
-           <b> <%= link_to post.user&.email, profile_path(post.user), style:"color: black"%></b> <br>
-            <%= image_tag(post.post_image , :size => "300x250") %><br>
-            <div class="b ">
+            <a>
+              <div class='imgsml'>
+                <%=image_tag(post.user.profile_image,size: '100x100',:class=> "img-circular")if post.user.profile_image.attached? %>
+                <b><%= link_to post.user&.email, profile_path(post.user), style:"color: black"%></b> <br>
+              </div> 
+            </a>
+          
+        <%= image_tag(post.post_image , :size => "300x300") %><br>
+       
+          <div class="b ">
             <%= button_to " ", post_likes_path(post), class:"bi bi-balloon-heart-fill", style:"color: black" %>
             <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-        <div class="a">
-        <%= button_to "comment", post_comments_path(post) %>
-        <%# <%= render 'comments/form', post: post,class: "btn  btn-sm btn-right"  %>
-        <%# <%= render partial: "comments/comment", locals: { comments: post.comments } %> 
-         </div>
+            <div class= "a">
+              <%= button_to " ", post_comments_path(post) ,class:"bi bi-chat", method: :get%></p> 
+            </div>
+            <div class = 'col'>
+            <%= render 'comments/form', post: post%>
+            <%= render partial: "comments/comment", locals: { comments: post.comments } ,class: "a" %>   
+            </div>
+          </div>
             </b>
         <%end%>
         <br>
