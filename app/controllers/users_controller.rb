@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
  
     def index
-      @users = User.where(user_id: current_user.following.ids)
+      @users = User.all
       @posts = Post.where(user_id: current_user.following.ids).order(created_at: :desc)
       @stories = Story.where("user_id IN (?) OR user_id = ?", current_user.following.ids, current_user.id)
     end
@@ -32,7 +32,5 @@ class UsersController < ApplicationController
     def total_user
       @users = User.all
     end
-    
-
 
 end

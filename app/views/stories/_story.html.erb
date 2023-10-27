@@ -1,0 +1,6 @@
+<div class="story">
+  <p><%= story.content %></p>
+  <% if story.image.attached? %>
+    <%= image_tag story.image, size: '300x300' %>
+  <% end %>
+</div>

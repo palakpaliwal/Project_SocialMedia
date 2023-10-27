@@ -1,11 +1,5 @@
+<%= @user.name %>
+
 <% @stories.each do |story| %>
-  <% if story.image.attached?%>
-    <%= link_to story.user&.email, profile_path(story.user) %>
-    <%= image_tag(story.image, size: "300x250") %><br>
-    <p class="text-muted"><%= story.created_at %> ago </p>
-    
-    <% if story.user == current_user %>
-      <%= link_to "Delete story", story, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %><br>
-    <% end %>
-  <% end %>
+  <%= render 'story', story: story %>
 <% end %>

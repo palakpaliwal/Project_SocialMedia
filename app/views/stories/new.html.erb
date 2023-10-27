@@ -1,10 +1,7 @@
   <div class="notice">
-  <%= form_with model: @story do |form| %>
-  <div class="field">
+  <%= form_with model: @stories do |form| %>
     <%= form.label :image %><br />
     <%= form.file_field :image %>
-  </div>
   <%= form.text_area :content %>
   <%= form.submit 'Create Story' %>
 <% end %>
-</  div>

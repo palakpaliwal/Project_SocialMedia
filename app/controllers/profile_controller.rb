@@ -3,6 +3,7 @@ class ProfileController < ApplicationController
     before_action :authenticate_user!
 
     def index
+        @user = current_user
         @posts = current_user.posts
         @stories = current_user.stories
         @posts = current_user.posts.order(created_at: :desc)

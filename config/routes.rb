@@ -32,6 +32,10 @@ Rails.application.routes.draw do
   resources :users
   get 'total_user', to:'users#total_user'
   get 'search', to:'users#search'
+
+
+resources :stories
+  
   resources :posts
   resources :home
   resources :notification
@@ -57,7 +61,7 @@ Rails.application.routes.draw do
 
   resources :my_profiles
 
-  resources :stories
+
 
   
 

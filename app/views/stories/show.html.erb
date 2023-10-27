@@ -1,26 +1,6 @@
-<div class = 'top'> 
-  <div class='imgsml'>
-    <li>
-      <% @stories.each do |story| %>
-        <a href="/stories/<%story.id %>">
-          <%=image_tag(story.image,size: '100x100',:class=> "img-circular")if story.image.attached? %> 
-          <%= link_to "Delete story", story, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %><br>  
-        </a>
-      <%end%>
-    <li>
-  </div>
-</div>
+<%= @user&.name %>
 
-
-
-
-   <% @stories.each do |story| %>
-     <% if story.image.attached? && story.expires_at && story.expires_at >= Time.now %>
-        <li>
-         <% if story.user == current_user %>
-          <%= image_tag(story.image, size: '100x100', class: "img-circular") %>
-          <%= link_to "Delete", story, method: :delete, data: { confirm: "Are you sure?" } %>
-          <% end %>
-        </li>
-      <% end %>
-    <% end %>
+<% @stories.each do |story| %>
+  <%= render 'story', story: story %>
+<% end %>
+<p><%= @story.content %></p>
