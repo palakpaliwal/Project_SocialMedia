@@ -43,21 +43,6 @@
   </div>
 </div>
 </div>
-<div class = 'top'> 
-  <div class='imgsml'>
-    <li>
-      <% @stories.each do |story| %>
-        <% if story.image.attached? && story.expires_at && story.expires_at >= Time.now %>
-          <% if story.user == current_user %>
-            <%=image_tag(story.image,size: '100x100',:class=> "img-circular")%> 
-            <%= link_to "Delete", story, method: :delete, data: { confirm: "Are you sure?" } %>
-          <%end%>
-        <%end%>
-      <%end%> 
-    <li>
-  </div>
-</div>
-<button type="button" class="btn btn-success"><%=link_to "Story",stories_new_path%></button><br>
 </div>
 </div><br>
 <%= render template: 'posts/index'%>

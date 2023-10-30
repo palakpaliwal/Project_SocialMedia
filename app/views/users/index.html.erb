@@ -1,21 +1,24 @@
-<% if user_signed_in?%>
-  <div class = 'top'> 
+<br><% if user_signed_in?%>
+<div class = 'top'> 
+  <div class="story">
     <div class='imgsml'>
       <div class="d-flex">
-      <% @users.each do|user| %>
-        <% @stories.each do |story| %>
-          <% if current_user == user || (current_user.following?(user) && user.stories.any? { |story| story.image.attached? }) %>
-            <a href="/stories/<%=story.id %>">
-              <%=image_tag(story.image,size: '100x100',:class=> "img-circular")if story.image.attached? %>
-              <%=user.name%>
-            </a>
+          <% @users.each do|user| %>
+            <% user.stories.each do |story| %>
+              <% if current_user == user || (current_user.following?(user) && user.stories.any? { |story| story.image.attached? }) &&  story&.expires_at > Time.now %>
+                <a href="/stories/<%=story.id %>">
+                <br>
+                  <%=image_tag(story.user.profile_image,size: '100x100',:class=> "img-circular")if story.user.profile_image.attached? %>
+                  <%=user.name%>
+                </a>
+              <% end %>
+            <%end%>
           <% end %>
-        <%end%>
-      <% end %>
+        </div>
       </div>
     </div>
   </div>
-
+<br>
 <button type="button" class="btn btn-danger"><%=link_to "Story",stories_new_path%></button><br>
    </button><br>
     <% @posts.each do |post|%>

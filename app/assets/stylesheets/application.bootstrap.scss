@@ -81,4 +81,27 @@
   top: 100px;
   left:300px;
 }
-  
+
+.scrollable-list {
+  height: 200px; /* Set the desired height for the scrollable area */
+  overflow: auto; /* This makes the list scrollable if it exceeds the container height */
+  border: 1px solid #ccc; /* Optional: Add a border for styling */
+  padding: 10px; /* Optional: Add padding for spacing */
+}
+
+ul {
+  list-style: none; /* Remove default list bullets */
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+.story{
+  margin-left: -290px;
+    margin-top: 5px;
+}
+.story_image
+{margin-left: 424px;}

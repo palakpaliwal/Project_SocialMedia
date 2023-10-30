@@ -14,22 +14,6 @@ class ProfileController < ApplicationController
         @posts = @user.posts
         @users = User.all
     end
-      
-    def create_post
-
-        @post = current_user.posts.create(post_params)
-        redirect_to root_path
-        
-        if @post.save
-        flash[:success] = "Post created successfully"
-        else
-        flash[:error] = "Error creating post"
-        end
-              
-    end
-    
-    def edit
-    end
 
     def update
 
@@ -40,20 +24,6 @@ class ProfileController < ApplicationController
         end
     end
 
-    private
-    
-    def post_params
-     params.require(:user).permit(:profile_image)
-    end
-
-    private
-     
-    def comment_params
-        params.require(:comment).permit(:content, :time)
-    end
-
-    def buttons
-        @user = current_user
-    end
+   
     
 end

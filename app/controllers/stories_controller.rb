@@ -2,7 +2,8 @@ class StoriesController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @stories=Story.all
+        @user=current_user
+        @stories = @user.stories.where.not(expires_at: nil).where("expires_at > ?", Time.now)
       end
     
       def new
@@ -10,6 +11,7 @@ class StoriesController < ApplicationController
       end
     
       def create
+        debugger
         @story = current_user.stories.new(story_params)
         @story.expires_at = DateTime.now + 1.day
         if @story.save
@@ -26,13 +28,22 @@ class StoriesController < ApplicationController
         @stories = Story.where(user_id: @story.user_id)
         if @story.present?
            
-          if @story.expires_at.present? && @story.expires_at > Time.now
+          if  @story.expires_at > Time.now
+            render :show
 
-            else
-            redirect_to root_path, alert: 'Story has expired.'
+          else
+            debugger
+            redirect_to root_path , alert: 'Story has expired.'
           end
 
         end
+      end
+
+      def destroy
+        @story = Story.find(params[:id])
+        @story.destroy
+        redirect_to stories_path
+
       end
     
       private

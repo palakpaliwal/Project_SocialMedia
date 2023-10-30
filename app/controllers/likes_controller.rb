@@ -4,20 +4,17 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post_id])
     @like = current_user.likes.find_or_initialize_by(post: @post)
 
-    # if @like.new_record?
-    #   if @like.save
-    #     render json: { liked: true, like_count: @post.likes.count }
-    #   else
-    #     render json: { error: 'Failed to create like' }, status: :unprocessable_entity
-    #   end
-    # else
-    #   @like.destroy
-    #   render json: { liked: false, like_count: @post.likes.count }
-    # end
-    if @like.save
-      flash[:atert] = "you already liked"
+    if @like.new_record?
+      if @like.save
+        render json: { liked: true, like_count: @post.likes.count }
+      else
+        render json: { error: 'Failed to create like' }, status: :unprocessable_entity
+      end
+    else
+      @like.destroy
+      render json: { liked: false, like_count: @post.likes.count }
     end
-    redirect_to users_path
+
 
   end
 

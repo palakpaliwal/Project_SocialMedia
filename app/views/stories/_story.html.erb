@@ -1,6 +1,10 @@
-<div class="story">
-  <p><%= story.content %></p>
-  <% if story.image.attached? %>
-    <%= image_tag story.image, size: '300x300' %>
-  <% end %>
-</div>
+  <% if story.expires_at > Time.now %>
+
+    <p><%= story.content %></p>
+    <% if story.image.attached? %>
+      <%= image_tag story.image, size: '300x300' %>
+    <% end %>
+    <% if story.user == current_user%>
+     <%= link_to "Delete", story, method: :delete, data: { confirm: "Are you sure?" } %>
+    <%end%>
+  <%end%>

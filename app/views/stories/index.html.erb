@@ -1,5 +1,5 @@
-<%= @user.name %>
 
 <% @stories.each do |story| %>
-  <%= render 'story', story: story %>
+    <p><%= story.content %></p>
+      <%= image_tag story.image, size: '300x300' %>
 <% end %>
