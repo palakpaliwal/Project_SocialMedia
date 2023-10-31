@@ -25,7 +25,7 @@ class FriendController < ApplicationController
     def accept
         @user = User.find(params[:id])
         current_user.accept_follow_request_of(@user)
-        # make_it_a_friend_request
+        make_it_a_friend_request
         redirect_to root_path
     
     end
@@ -63,9 +63,9 @@ class FriendController < ApplicationController
         @user.accept_follow_request_of(current_user)
     end
 
-    # def make_it_a_unfriend_request
-    #     @user.unfollow(current_user) if @user.mutual_following_with(current_user)
-    # end
+    def make_it_a_unfriend_request
+        @user.unfollow(current_user) if @user.mutual_following_with(current_user)
+    end
   
 
    

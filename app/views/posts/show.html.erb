@@ -11,7 +11,7 @@
           <div class= "col d flex">
             <div class="b">
             <%= button_to " ", post_likes_path(post), class:"bi bi-balloon-heart-fill", style:"color: black" ,remote: true%>
-            <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
+            <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes', class:"like_count"%>
             </div>
             <%# <div class= "a">
             <%= button_to " ", post_comments_path(post) ,class:"bi bi-chat", method: :get%></p> 

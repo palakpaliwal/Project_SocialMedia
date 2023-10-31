@@ -1,19 +1,17 @@
 <% @users.each do |user|%>
-<% if current_user.following?(user)%>
-    <%= link_to user.email ,profile_path(user) , style:"color: black"%> is following you
-    <div  class="btn  btn-lg float-right" >
-    <%= button_to "Unfollow", unfollow_path(user) ,class: "btn btn-dark" %>
-    </div>
-<% elsif current_user.sent_follow_request_to?(user) %>
-    <%= link_to user.email, profile_path(user), style:"color: black"%>
-    <div class="btn  btn-lg float-right" >
-    <%= button_to "cancle follow request", cancle_path(user) ,class:"btn btn-secondary"%>
-    </div>
-<% else %>
-    <%= link_to user.email, profile_path(user), style:"color: black"%>
-      <div class="btn  btn-lg float-right">
-    <%= button_to "Follow", follow_path(user) ,class:"btn btn-primary"%>
-</div>    
-<%end%>
+    <% if current_user.following?(user)%>
+    <p>
+        <%= link_to user.email ,profile_path(user) , style:"color: black"%> is following you
+        <%= button_to "Unfollow", unfollow_path(user) ,class: "btn btn-dark" %>
+    </p>
+    <% elsif current_user.sent_follow_request_to?(user) %>
+        <%= link_to user.email, profile_path(user), style:"color: black"%>
+        <%= button_to "cancle follow request", cancle_path(user) ,class:"btn btn-secondary"%>
+    
+    <% else %>
+        <%= link_to user.email, profile_path(user), style:"color: black"%>
+        <%= button_to "Follow", follow_path(user) ,class:"btn btn-primary"%>
+     
+    <%end%>
 <br>
 <% end %>
