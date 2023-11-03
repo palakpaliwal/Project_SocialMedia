@@ -8,19 +8,16 @@ class LikesController < ApplicationController
     if @like.new_record?
       if @like.save
         
-        # render json: { liked: true, like_count: @post.likes.count }
       else
-        # render json: { error: 'Failed to create like' }, status: :unprocessable_entity
       end
     else
       @like.destroy
-      # render json: { liked: false, like_count: @post.likes.count }
     end
-    @likes = current_user.likes
+    @likes = @post.likes
     respond_to do |format|
-      # debugger
-      format.js {}   # Add this line for JavaScript response format
-      format.html { }   # Add this line for JavaScript response format
+      format.js   
+      format.html
+      format.turbo_stream
     end
   
   end

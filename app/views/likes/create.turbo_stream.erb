@@ -1,0 +1,8 @@
+
+<turbo-stream action="replace" target="like_count_<%= @post.id %>">
+  <template>
+    <%= turbo_frame_tag "like_count_#{@post.id}" do %>
+      <%= @likes.count %> likes
+    <% end %>
+  </template>
+</turbo-stream>

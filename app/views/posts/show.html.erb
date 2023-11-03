@@ -10,8 +10,10 @@
         <div class="row row-cols-2">
           <div class= "col d flex">
             <div class="b">
-            <%= button_to " ", post_likes_path(post), class:"bi bi-balloon-heart-fill", style:"color: black" ,remote: true%>
-            <p class="like_count"><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+              <%= button_to " ", post_likes_path(post), class:"bi bi-balloon-heart-fill", style:"clor: black", remote: true %>
+              <%= turbo_frame_tag "like_count_#{post.id}" do %>
+                <%= post.likes.count %> likes
+              <% end %>
             </div>
             <%# <div class= "a">
             <%= button_to " ", post_comments_path(post) ,class:"bi bi-chat", method: :get%></p> 

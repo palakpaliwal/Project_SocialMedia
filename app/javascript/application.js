@@ -8,4 +8,3 @@ import * as bootstrap from "bootstrap"
 import './add_jquery'
 import "./channels"
 import "@fortawesome/fontawesome-free/js/all";
-
