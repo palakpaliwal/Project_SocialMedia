@@ -3,17 +3,18 @@
   <div class="story">
     <div class='imgsml'>
       <div class="d-flex">
-          <% @users.each do|user| %>
-            <% user.stories.each do |story| %>
-              <% if current_user == user || (current_user.following?(user) && user.stories.any? { |story| story.image.attached? }) &&  story&.expires_at > Time.now %>
-                <a href="/stories/<%=story.id %>">
-                <br>
-                  <%=image_tag(story.user.profile_image,size: '100x100',:class=> "img-circular")if story.user.profile_image.attached? %>
-                  <%=user.name%>
-                </a>
+          <% @stories.each do |user_id, stories| %>
+          
+          <% user = stories.first.user %>
+            <br>
+            <% if stories.first.expires_at > Time.now%>
+              <a href="/stories/<%= stories.first.id %>"> 
+              
+                <%=image_tag(user.profile_image,size: '100x100',:class=> "img-circular")if user.profile_image.attached? %>
+                <%=user.name%>
               <% end %>
-            <%end%>
-          <% end %>
+            </a>
+          <%end%>
         </div>
       </div>
     </div>
@@ -33,7 +34,9 @@
         <%= image_tag(post.post_image , :size => "300x300") %><br>
        
           <div class="b ">
-            <%= button_to " ", post_likes_path(post), class:"bi bi-balloon-heart-fill", style:"color: black" %>
+
+          <%= link_to 'Button/Link', post_likes_path(post_id: post, :format => "js"), method: :post, data:{turbo: true}, remote: true %>
+            <%= button_to " ", post_likes_path(post), class:"bi bi-balloon-heart-fill", style:"color: black", data:{turbo: true}, remote: true %>
             <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
             <div class= "a">
               <%= button_to " ", post_comments_path(post) ,class:"bi bi-chat", method: :get%></p> 

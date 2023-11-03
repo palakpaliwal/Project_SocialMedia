@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     def index
       @users = User.all
       @posts = Post.where(user_id: current_user.following.ids).order(created_at: :desc)
-      @stories = Story.where("user_id IN (?) OR user_id = ?", current_user.following.ids, current_user.id)
+      @stories = Story.where(user_id: current_user.following.ids).where('expires_at > ?', Time.now).group_by(&:user_id)
     end
   
     def show

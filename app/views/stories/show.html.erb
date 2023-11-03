@@ -1,7 +1,7 @@
 <div class="story_image">
-<% if @story.expires_at > Time.now%>
-  <% @stories.each do |story| %>
-  <%= render 'story', story: story %>
+<% if  @story.expires_at > Time.now%>
+    <% @stories.each do |story| %>
+    <%= render 'story', story: story %>
   <%end%>
 
 <% end %>

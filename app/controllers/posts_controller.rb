@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!
+    
 
     def index
        @posts = current_user.posts
@@ -7,9 +7,9 @@ class PostsController < ApplicationController
     end
     
     def show
+        debugger
          @post = Post.find(params[:id])
-         @user = User.find(params[:id])
-         
+   
     end
     
     def new
