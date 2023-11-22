@@ -38,15 +38,17 @@
             <%= turbo_frame_tag "like_count_#{post.id}" do %>
               <%= post.likes.count %> likes
             <% end %>
-            <div class= "a">
+          </div>  
+            <div class = "button">
               <%= button_to " ", post_comments_path(post) ,class:"bi bi-chat", method: :get%></p> 
             </div>
-            <div class = 'col'>
-            <%=render 'comments/form', post: post%>
-            <%= render partial: "comments/comment", locals: { comments: post.comments } ,class: "a" %>  
+            <div class= "a">
+              <div class = 'col'>
+                <%= render 'comments/form', post: post%>
+                <%# <%= render partial: "comments/comment", locals: { comments: post.comments } ,class: "a" %> 
+            
+              </div>
             </div>
-          </div>
-            </b>
         <%end%>
         <br>
     <% end %>
